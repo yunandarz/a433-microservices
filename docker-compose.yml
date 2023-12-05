@@ -1,0 +1,23 @@
+#Version docker compose
+version: '3.7'
+
+services:
+#Service untuk item-db
+  item-db:
+    image: mongo:3
+    restart: always
+    volumes:
+      - app-db:/data/db
+
+#Service untuk item-app
+  item-app:
+    image: yunandar711/item-app:v1
+    depends_on:
+      - item-db
+    restart: always
+    ports:
+      - 80:8080
+
+#Membuat volume untuk service item-db
+volumes:
+  app-db:
