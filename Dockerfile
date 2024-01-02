@@ -6,6 +6,7 @@
     ENV NODE_ENV=production
     RUN npm ci
     COPY ./*.js ./
+    EXPOSE 3000
     CMD ["node", "index.js"]
      
     FROM base as dev
@@ -16,4 +17,5 @@
     ENV NODE_ENV=development
     RUN npm install
     COPY ./*.js ./
+    EXPOSE 3000
     CMD ["node", "index.js"]
